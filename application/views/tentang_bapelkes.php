@@ -5,9 +5,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<meta charset="utf-8">
 	<title>PERPUSTAKAAN SMA N 1 WARUREJA</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="<?php echo base_url('/assets/bootstrap/css/bootstrap.css')?>">
+  <script src="<?php echo base_url('/assets/jquery.min.js'); ?>"></script>
+  <script src="<?php echo base_url('/assets/bootstrap.min.js'); ?>"></script>
 	<style type="text/css">
 
 	::selection { background-color: #E13300; color: white; }
@@ -121,10 +121,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="<?php echo base_url('index.php/beranda'); ?>">PERPUSTAKAAN SMA N 1 WARUREJA</a>
+      <a class="navbar-brand" href="<?php echo base_url(); ?>">PERPUSTAKAAN SMA N 1 WARUREJA</a>
     </div>
     <ul class="nav navbar-nav">
-      <li ><a href="<?php echo base_url('index.php/beranda'); ?>">Beranda</a></li>
+      <li ><a href="<?php echo base_url(); ?>">Beranda</a></li>
       <li ><a href="<?php echo base_url('index.php/beranda/daftarbuku'); ?>">Daftar Buku</a></li>
       <li class="active"><a href="<?php echo base_url('index.php/beranda/tentang'); ?>">Tentang</a></li>
       <li><a href="<?php echo base_url('index.php/beranda/kalender'); ?>">Kalender</a></li>

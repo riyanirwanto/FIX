@@ -1,13 +1,19 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Perpustakaan Bapelkes Semarang</title>
+  
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/select2/select2.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="<?php echo base_url('plugins/fontawesome-free/css/all.min.css'); ?>">
   <!-- Ionicons -->  
-  <!--css khusus halaman ini -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.css">
-<!--modal dialog untuk hapus -->
-<!--content -->
-
+  
   <style type="text/css">
 
   ::selection { background-color: #E13300; color: white; }
@@ -182,126 +188,128 @@
 
 
 <div class="container">
-  <div class="box box-solid box-primary">
+  
+<!--content -->
+<div class="box box-solid box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title"><i class="fa fa-book"></i> Daftar Buku Kembali</h3>
+    <h3 class="box-title"><i class="fa fa-plus"></i> <i class="fa fa-book"></i> Kembalikan  Peminjaman</h3>
     <div class="box-tools pull-right">
-    
     </div><!-- /.box-tools -->
-
   </div><!-- /.box-header -->
    <div class="box-body">
-   <!--div class="btn-group"><a href="<?php echo base_url(); ?>admin/Kembali/edit"  class="btn btn-success" role="button" data-toggle="tooltip" title="Kembalikan"><i class="fa fa-plus"></i> Kembalikan Buku</a></div-->
-   
-   <table cellspacing="0"  width="70%">
-   <tr><td colspan="3"> <h4><b>Detail Pengembalian Buku</b></h4></td></tr>
-   <tr>
-      <td width="25%"><h5><b> Nama Peminjam</b> </h5></td>
-      <td> <h5><b>:</b></h5></td>
-      <td><h5><b><?php foreach ($data_anggota->result_array() as $value) 
-           {
-             if ($value['id_anggota']==$data_pinjam['id_anggota']) 
-             {
-                echo $value['nama'];
-             }
-           } ?>
-      </b></h5>
-        </td>
-    </tr>  
-      <tr>
-      <td width="25%"><h5><b> Tanggal Pinjam</b> </h5></td>
-      <td> <h5><b>:</b></h5></td>
-      <td><h5><b><?php $oridate=$data_pinjam['tgl_pinjam'];
-                $date=date("d-M-Y",strtotime($oridate));
-                echo $date;
-              ?>
-      </b></h5>
-        </td>
-    </tr>
-    <tr>
-      <td width="25%"><h5><b> Tanggal Pengembalian</b> </h5></td>
-      <td> <h5><b>:</b></h5></td>
-      <td><h5><b><?php $oridate=$kembali['tgl_dikembalikan'];
-                $date=date("d-M-Y",strtotime($oridate));
-                echo $date;
-              ?>
-      </b></h5>
-        </td>
-    </tr>  
-   </table>
-   <div class="form-group"></div>
-   <table id="" class="table table-bordered table-hover" cellspacing="0" width="70%">
-        <thead>
-            <tr>
-                <th width="5%">No</th>
-                <th width="10%">ID Buku</th>
-                <th>Judul Buku</th>
-                <th width="15%">No Buku</th>
-            </tr>
-        </thead>
-        <tbody>
-         <?php
-  $no = 1;
-    foreach($data_detail_pinjam->result_array() as $op)
-    {
-      if ($op['id_pinjam']==$data_pinjam['id_pinjam']) 
-      {
-        $buku=$op['id_buku'];
-        $no_buku=$op['no_buku'];
-        foreach ($data_buku->result_array() as $op2) 
-        {
-         if($op2['id_buku']==$buku && $op['id_pinjam']==$data_pinjam['id_pinjam'])
-          { 
-                  ?>
-                  <tr>
-                      <td><?php echo $no++ ;?></td>
-                      <td><?php echo $op['id_buku'];?></td>
-                      <td><?php echo $op2['judul'];?></td>
-                      <td align="center"><?php echo $op['no_buku'];?></td>
-                  </tr>
-<?php           }
-        }
-      }
-    }
-    ?>
-    <tr>
-      <td colspan="3" align="right"><b> Jumlah Buku </b></td>
-      <td align="right"><?php echo $data_pinjam['total_buku'];?> </td>
-    </tr>
-    <tr>
-      <td colspan="3" align="right"><b> Terlambat</b></td>
-      <td align="right"><?php echo $kembali['terlambat'];?> </td>
-    </tr>
-     <tr>
-      <td colspan="3" align="right"><b> Denda (perhari)</b></td>
-      <td align="right">Rp. <?php 
-                              $id_denda=$kembali['id_denda'];
-                              $this->db->where('id_denda',$id_denda);
-                              $tt=$this->db->get('tb_denda')->result_array();
-                              foreach ($tt as $key => $value11) {
-                                echo number_format($value11['denda'],2,",",".")."<br>";
-                              } 
-                              ?> </td>
-    </tr>
-    <tr>
-      <td colspan="3" align="right"><b> Jumlah denda</b></td>
-      <td align="right"><b>Rp.<?php echo number_format($kembali['denda'],2,",",".")."<br>";?></b> </td>
-    </tr> 
-         </tbody>
-    </table>
+
+    <?php if(!empty(validation_errors())){
+        echo '<div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+                <p>Inputan tidak terisi dengan benar. Cek kembali</p>';
+                echo validation_errors();
+             echo '</div>';
+
+    }?>
+    <!--show error message here -->
+  <div class="form-group"></div>
+  <form class="form-horizontal" method="post"  action="<?php echo base_url(); ?>index.php/Kembali/Kembalikan/<?php echo $data_pinjam['id_pinjam'];?>" role="form">
+              <div class="box-body">
+                <div class="form-group">
+                 <label class="col-sm-2 control-label">Anggota</label>
+                 <div class="col-sm-5">
+                   <select name="id_anggota" class="js-example-basic-single form-control" disabled="disabled" data-placeholder="Klik untuk memilih">
+              <?php foreach($data_anggota->result_array() as $op)
+                    {
+                      if($op['id_anggota']==$data_pinjam['id_anggota'])
+                      {
+                      ?>
+                        <option value="<?php echo $op['id_anggota'];?>"><?php echo $op['nama'];?></option>
+                      
+                    </select>
+              </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Tanggal Pinjam</label>
+                  <div class="col-sm-4">
+                    <input type="date" value="<?php echo $data_pinjam['tgl_pinjam'];?>" disabled="disabled" required="required" class="form-control">
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label class="col-sm-2 control-label">Tanggal Kembali</label>
+                  <div class="col-sm-4">
+                    <input type="date" name="tgl_kembali" value="<?php echo $data_pinjam['tgl_kembali'];?>" disabled="disabled" required="required" class="form-control" >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Tanggal di Kembalikan</label>
+                  <div class="col-sm-4">
+                    <!--input type="date" required="required" class="form-control" name="tgl_kembali"-->
+                    <input type="input" class="bootstrap-datepicker" name="tgl_dikembali" value="<?php echo "20".date('y-m-d'); ?>" disabled="disabled" >
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+              </div>
+              <div class="col-sm-4">
+                  <div class="btn-group">
+                   <button type="reset" class="btn btn-info"><i class="fa fa-refresh"></i>Reset</button>
+        </div>
+                   <div class="btn-group">
+                   <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-share"></i> Kembalikan</button>
+                  </div>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+
+
+
+
+            <?php
+if (isset($_POST['submit'])) {
+
+  $id=$op['id_anggota'];
+  echo "hai";
+
+                $aa ="SELECT id_pinjam FROM tb_pinjam where id_pinjam=$id";
+                $bb = mysqli_query($dbcon, $aa);
+                while ($cc= mysqli_fetch_array($bb)) {
+
+                $dd=$cc['id_pinjam'];
+                $aa2 ="SELECT id_buku FROM tb_detail_pinjam where id_pinjam=$dd";
+                $bb2 = mysqli_query($dbcon, $aa2);
+                while ($cc2= mysqli_fetch_array($bb2)) {
+                  $dd2=$cc2['id_buku'];
+                  $aa2 ="SELECT id_buku FROM tb_detail_pinjam where id_pinjam=$dd2";
+                $bb2 = mysqli_query($dbcon, $aa2);
+                while ($cc2= mysqli_fetch_array($bb2)) {
+                  $aa3 ="SELECT * FROM tb_buku where id_buku=$dd3";
+                $bb3 = mysqli_query($dbcon, $aa3);
+                while ($cc3= mysqli_fetch_array($bb3)) {
+                  $stok=$cc3['tersedia'];
+                  $stok2=$cc3['dipinjam'];
+                  $hasil=$stok+1;
+                  $hasil2=$stok2-1;
+
+                
+                  $addd = "UPDATE tb_buku SET tersedia=$hasil,dipinjam=$hasil2 where id_buku=$dd2 ";
+                $dbbb= mysqli_query($dbcon,$addd);
+               }}}}}
+
+               ?>
+
+
+               <?php
+                      }
+                    }
+                    ?>
   </div>
     <div class="box-footer">
     <td>
-    <div align ="left"> <a  href="<?php echo base_url(); ?>index.php/beranda/beranda_admin"  class="btn btn-danger" role="button" data-toggle="tooltip" title="Kembali"></i>Back</a></div>
+    <div align ="Right"> <a  href="<?php echo base_url(); ?>index.php/beranda/beranda_admin"  class="btn btn-danger" role="button" data-toggle="tooltip" title="Kembali"></i>Back</a></div>
   </td>
   </div>
-  <div class="box-footer">
-  </div><!-- box-footer -->
+  
 </div><!-- /.box -->
 
 
-      
-  
+
 
 </div>
 

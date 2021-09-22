@@ -1,13 +1,18 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Perpustakaan Bapelkes Semarang</title>
+  <!--css khusus halaman ini -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="<?php echo base_url('plugins/fontawesome-free/css/all.min.css'); ?>">
   <!-- Ionicons -->  
-  <!--css khusus halaman ini -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.css">
-<!--modal dialog untuk hapus -->
-<!--content -->
-
+  
   <style type="text/css">
 
   ::selection { background-color: #E13300; color: white; }
@@ -182,7 +187,11 @@
 
 
 <div class="container">
-  <div class="box box-solid box-primary">
+  
+
+<!--modal dialog untuk hapus -->
+<!--content -->
+<div class="box box-solid box-primary">
   <div class="box-header with-border">
     <h3 class="box-title"><i class="fa fa-book"></i> Daftar Buku Kembali</h3>
     <div class="box-tools pull-right">
@@ -217,11 +226,11 @@
               ?>
       </b></h5>
         </td>
-    </tr>
+    </tr>  
     <tr>
       <td width="25%"><h5><b> Tanggal Pengembalian</b> </h5></td>
       <td> <h5><b>:</b></h5></td>
-      <td><h5><b><?php $oridate=$kembali['tgl_dikembalikan'];
+      <td><h5><b><?php $oridate=$data_pinjam2['tgl_dikembalikan'];
                 $date=date("d-M-Y",strtotime($oridate));
                 echo $date;
               ?>

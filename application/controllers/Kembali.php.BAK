@@ -152,7 +152,7 @@ class Kembali extends CI_Controller {
                 $d=$row11->denda;
             }
             // Hitung selisih hari pengembalian
-            $SLS=((strtotime(date('y-m-d'))-strtotime($tgl))/(60*60*24));
+            $SLS=((strtotime($this->input->post('tgl_dikembali'))-strtotime($tgl))/(60*60*24));
             if ($SLS>0) {
                 //hitung jumlah dennda jika terlambat lebih dari 0
                 $jumlahdenda=$d*$SLS;
