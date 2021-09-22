@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2021 at 08:47 PM
+-- Generation Time: Sep 22, 2021 at 12:14 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -40,7 +40,46 @@ CREATE TABLE `apriori` (
 
 INSERT INTO `apriori` (`id`, `id_buku`, `nama`) VALUES
 (1, 16605, '1'),
-(2, 17532, '1');
+(2, 17532, '1'),
+(3, 17532, '4'),
+(4, 17472, '5'),
+(5, 17400, '6'),
+(6, 17310, '7'),
+(7, 17235, '8'),
+(8, 17075, '9'),
+(9, 17005, '10'),
+(10, 16905, '11'),
+(11, 16805, '12'),
+(12, 16705, '13'),
+(13, 17532, '14'),
+(14, 16705, '14'),
+(15, 16805, '14'),
+(16, 16605, '4'),
+(17, 16705, '6'),
+(18, 16605, '15'),
+(19, 16705, '15'),
+(20, 16605, '16'),
+(21, 16805, '16'),
+(22, 16605, '17'),
+(23, 16905, '17'),
+(24, 16605, '18'),
+(25, 17005, '18'),
+(26, 16605, '19'),
+(27, 17075, '19'),
+(28, 16605, '20'),
+(29, 17235, '20'),
+(30, 16605, '21'),
+(31, 17310, '21'),
+(32, 16605, '22'),
+(33, 17400, '22'),
+(34, 16605, '23'),
+(35, 17472, '23'),
+(36, 16805, '15'),
+(37, 16705, '17'),
+(38, 16705, '24'),
+(39, 16605, '24'),
+(40, 16905, '24'),
+(41, 16705, '20');
 
 -- --------------------------------------------------------
 
@@ -107,7 +146,13 @@ INSERT INTO `tb_anggota` (`id_anggota`, `image`, `nama`, `id_kelas`, `id_agama`,
 ('ANGG000002', 'default.png', 'Aeni Agustin', 1, 1, 'P', '089123456789', 'Tegal', 'aeni@gmail.com'),
 ('ANGG000003', 'default.png', 'Amelia Urfa', 1, 1, 'P', '123456778986', 'Tegal', 'gg@gmail.com'),
 ('ANGG000004', 'default.png', 'Dede Agus Wahyudi', 1, 1, 'L', '12399989888', 'Tegal', 'tt@gmail.com'),
-('ANGG000005', 'default.png', 'Dwi Ayu Lestari', 7, 1, 'P', '2738277393890', 'Tegal', 'Tegal');
+('ANGG000005', 'default.png', 'Dwi Ayu Lestari', 7, 1, 'P', '2738277393890', 'Tegal', 'Tegal'),
+('ANGG000006', 'default.png', 'Bagas Ariaji', 6, 1, 'L', '123456678', 'Tegal', 'S@gmail.com'),
+('ANGG000007', 'default.png', 'Dewi Larasati', 3, 1, 'P', '1234567897', 'Tegal', 'd@gmail.com'),
+('ANGG000008', 'default.png', 'Ali Usman', 3, 1, 'L', '1234567897', 'Tegal', 'F@gmail.com'),
+('ANGG000009', 'default.png', 'Windi Nur Safitri', 5, 1, 'P', '1234567897', 'Tegal', 'g@gmail.com'),
+('ANGG000010', 'default.png', 'Putra Nur Aziz', 5, 1, 'L', '123456778986', 'Tegal', 'r@gmail.com'),
+('ANGG000011', 'default.png', 'Deti Reni Sahara', 2, 1, 'P', '12399989888', 'Tegal', 't@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -133,17 +178,17 @@ CREATE TABLE `tb_buku` (
 --
 
 INSERT INTO `tb_buku` (`id_buku`, `judul`, `id_kategori`, `id_penerbit`, `id_pengarang`, `tersedia`, `dipinjam`, `no_rak`, `thn_terbit`, `stok`) VALUES
-('16605', 'Buku Siswa PENDIDIKAN PANCASILA DAN KEWARGANEGARAAN KELAS X Seri HOTs', 1, 1, 1, 99, 1, 1, 2020, 100),
-('16705', 'Buku Siswa Bahasa Inggris 1 Kelas X', 4, 2, 2, 100, 0, 2, 2020, 100),
-('16805', 'Buku Siswa MATEMATIKA Kelas X Seri HOTS', 2, 1, 3, 100, 0, 3, 2020, 100),
-('16905', 'Buku Siswa SWJARAH INDONESIA Kelas X', 5, 1, 4, 100, 0, 4, 2020, 100),
-('17005', 'Menjelajah Dunia BIOLOGI Kelas X', 6, 3, 5, 100, 0, 5, 2020, 100),
-('17075', 'Buku Siswa BAHASA INDONESIA Kelas X Seri HOTS', 3, 1, 6, 100, 0, 6, 2019, 100),
-('17235', 'SEJARAH Kelas X', 8, 4, 8, 72, 0, 7, 2019, 72),
-('17310', 'EKONOMI Kelas X', 9, 5, 9, 90, 0, 8, 2019, 90),
-('17400', 'SOSIOLOGI Kelas X', 10, 3, 10, 72, 0, 9, 2019, 72),
-('17472', 'MATEMATIKA Peminatan IPA Kelas x', 11, 4, 11, 60, 0, 10, 2019, 60),
-('17532', 'Pendidikan Agama Islam dan Budi Pekerti Kelas X', 12, 4, 12, 89, 1, 11, 2019, 90);
+('16605', 'Buku Siswa PENDIDIKAN PANCASILA DAN KEWARGANEGARAAN KELAS X Seri HOTs', 1, 1, 1, 90, 10, 1, 2020, 100),
+('16705', 'Buku Siswa Bahasa Inggris 1 Kelas X', 4, 2, 2, 96, 4, 2, 2020, 100),
+('16805', 'Buku Siswa MATEMATIKA Kelas X Seri HOTS', 2, 1, 3, 98, 2, 3, 2020, 100),
+('16905', 'Buku Siswa SWJARAH INDONESIA Kelas X', 5, 1, 4, 98, 2, 4, 2020, 100),
+('17005', 'Menjelajah Dunia BIOLOGI Kelas X', 6, 3, 5, 99, 1, 5, 2020, 100),
+('17075', 'Buku Siswa BAHASA INDONESIA Kelas X Seri HOTS', 3, 1, 6, 99, 1, 6, 2019, 100),
+('17235', 'SEJARAH Kelas X', 8, 4, 8, 71, 1, 7, 2019, 72),
+('17310', 'EKONOMI Kelas X', 9, 5, 9, 89, 1, 8, 2019, 90),
+('17400', 'SOSIOLOGI Kelas X', 10, 3, 10, 71, 1, 9, 2019, 72),
+('17472', 'MATEMATIKA Peminatan IPA Kelas x', 11, 4, 11, 59, 1, 10, 2019, 60),
+('17532', 'Pendidikan Agama Islam dan Budi Pekerti Kelas X', 12, 4, 12, 90, 0, 11, 2019, 90);
 
 -- --------------------------------------------------------
 
@@ -196,8 +241,47 @@ CREATE TABLE `tb_detail_pinjam` (
 --
 
 INSERT INTO `tb_detail_pinjam` (`id_detail_pinjam`, `id_pinjam`, `id_buku`, `no_buku`, `flag`) VALUES
-(1, 1, '16605', 1, 2),
-(2, 1, '17532', 1, 2);
+(1, 1, '16605', 1, 1),
+(2, 1, '17532', 1, 1),
+(3, 4, '17532', 1, 1),
+(4, 5, '17472', 1, 1),
+(5, 6, '17400', 1, 1),
+(6, 7, '17310', 1, 1),
+(7, 8, '17235', 1, 1),
+(8, 9, '17075', 1, 1),
+(9, 10, '17005', 1, 1),
+(10, 11, '16905', 1, 1),
+(11, 12, '16805', 1, 1),
+(12, 13, '16705', 1, 1),
+(13, 14, '17532', 1, 1),
+(14, 14, '16705', 1, 1),
+(15, 14, '16805', 1, 1),
+(16, 4, '16605', 1, 1),
+(17, 6, '16705', 1, 1),
+(18, 15, '16605', 1, 2),
+(19, 15, '16705', 1, 2),
+(20, 16, '16605', 1, 2),
+(21, 16, '16805', 1, 2),
+(22, 17, '16605', 1, 2),
+(23, 17, '16905', 1, 2),
+(24, 18, '16605', 1, 2),
+(25, 18, '17005', 1, 2),
+(26, 19, '16605', 1, 2),
+(27, 19, '17075', 1, 2),
+(28, 20, '16605', 1, 2),
+(29, 20, '17235', 1, 2),
+(30, 21, '16605', 1, 2),
+(31, 21, '17310', 1, 2),
+(32, 22, '16605', 1, 2),
+(33, 22, '17400', 1, 2),
+(34, 23, '16605', 1, 2),
+(35, 23, '17472', 1, 2),
+(36, 15, '16805', 1, 2),
+(37, 17, '16705', 1, 2),
+(38, 24, '16705', 1, 2),
+(39, 24, '16605', 1, 2),
+(40, 24, '16905', 1, 2),
+(41, 20, '16705', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -291,7 +375,19 @@ CREATE TABLE `tb_kembali` (
 
 INSERT INTO `tb_kembali` (`id_kembali`, `id_pinjam`, `tgl_dikembalikan`, `terlambat`, `id_denda`, `denda`) VALUES
 (2, 3, '2021-09-17', 0, 1, 0),
-(3, 3, '2021-09-17', 0, 1, 0);
+(3, 3, '2021-09-17', 0, 1, 0),
+(4, 1, '2021-09-20', 0, 1, 0),
+(5, 4, '2021-09-20', 0, 1, 0),
+(6, 5, '2021-09-20', 0, 1, 0),
+(7, 7, '2021-09-20', 0, 1, 0),
+(8, 6, '2021-09-20', 0, 1, 0),
+(9, 8, '2021-09-20', 0, 1, 0),
+(10, 9, '2021-09-20', 0, 1, 0),
+(11, 10, '2021-09-20', 0, 1, 0),
+(12, 11, '2021-09-20', 0, 1, 0),
+(13, 12, '2021-09-20', 0, 1, 0),
+(14, 13, '2021-09-20', 0, 1, 0),
+(15, 14, '2021-09-20', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -411,9 +507,30 @@ CREATE TABLE `tb_pinjam` (
 --
 
 INSERT INTO `tb_pinjam` (`id_pinjam`, `tgl_pinjam`, `id_anggota`, `tgl_kembali`, `total_buku`, `status`) VALUES
-(1, '2021-09-17', 'ANGG000001', '2021-09-24', 2, 0),
+(1, '2021-09-17', 'ANGG000001', '2021-09-24', 2, 1),
 (2, '2021-09-01', 'ANGG000001', '2021-09-08', 1, 1),
-(3, '2021-09-01', 'ANGG000001', '2021-09-08', 1, 1);
+(3, '2021-09-01', 'ANGG000001', '2021-09-08', 1, 1),
+(4, '2021-09-20', 'ANGG000002', '2021-09-27', 2, 1),
+(5, '2021-09-20', 'ANGG000003', '2021-09-27', 1, 1),
+(6, '2021-09-20', 'ANGG000004', '2021-09-27', 2, 1),
+(7, '2021-09-20', 'ANGG000005', '2021-09-27', 1, 1),
+(8, '2021-09-20', 'ANGG000006', '2021-09-27', 1, 1),
+(9, '2021-09-20', 'ANGG000007', '2021-09-27', 1, 1),
+(10, '2021-09-20', 'ANGG000008', '2021-09-27', 1, 1),
+(11, '2021-09-20', 'ANGG000009', '2021-09-27', 1, 1),
+(12, '2021-09-20', 'ANGG000010', '2021-09-27', 1, 1),
+(13, '2021-09-20', 'ANGG000011', '2021-09-27', 1, 1),
+(14, '2021-09-20', 'ANGG000001', '2021-09-27', 3, 1),
+(15, '2021-09-20', 'ANGG000002', '2021-09-27', 3, 0),
+(16, '2021-09-20', 'ANGG000003', '2021-09-27', 2, 0),
+(17, '2021-09-20', 'ANGG000005', '2021-09-27', 3, 0),
+(18, '2021-09-20', 'ANGG000004', '2021-09-27', 2, 0),
+(19, '2021-09-20', 'ANGG000006', '2021-09-27', 2, 0),
+(20, '2021-09-20', 'ANGG000007', '2021-09-27', 3, 0),
+(21, '2021-09-20', 'ANGG000008', '2021-09-27', 2, 0),
+(22, '2021-09-20', 'ANGG000009', '2021-09-27', 2, 0),
+(23, '2021-09-20', 'ANGG000010', '2021-09-27', 2, 0),
+(24, '2021-09-20', 'ANGG000001', '2021-09-27', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -679,7 +796,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `apriori`
 --
 ALTER TABLE `apriori`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tb_agama`
@@ -703,7 +820,7 @@ ALTER TABLE `tb_detail_buku`
 -- AUTO_INCREMENT for table `tb_detail_pinjam`
 --
 ALTER TABLE `tb_detail_pinjam`
-  MODIFY `id_detail_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_detail_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tb_kategori`
@@ -721,7 +838,7 @@ ALTER TABLE `tb_kelas`
 -- AUTO_INCREMENT for table `tb_kembali`
 --
 ALTER TABLE `tb_kembali`
-  MODIFY `id_kembali` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kembali` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tb_penerbit`
@@ -739,7 +856,7 @@ ALTER TABLE `tb_pengarang`
 -- AUTO_INCREMENT for table `tb_pinjam`
 --
 ALTER TABLE `tb_pinjam`
-  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tb_provinsi`
